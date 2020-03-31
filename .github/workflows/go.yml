@@ -37,7 +37,7 @@ jobs:
       uses: actions/upload-artifact@v1.0.0
       with:
         name: elb-http-check
-        path: elb-http-check
+        path: elb-check/elb-http-check/elb-http-check
 
     - name: Build the Docker image
       run: docker build elb-check/elb-http-check/.  --tag elb-http-check:$(date +%s)
