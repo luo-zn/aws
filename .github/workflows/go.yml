@@ -31,7 +31,7 @@ jobs:
         fi
 
     - name: Build go code
-      run: export CGO_ENABLED=0 && GOOS=linux &&  go build -v -installsuffix cgo elb-check/elb-http-check/.
+      run: export CGO_ENABLED=0 && GOOS=linux &&ls && cd elb-check/elb-http-check &&  go build -v -installsuffix cgo 
       
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
