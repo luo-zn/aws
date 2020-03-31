@@ -41,5 +41,5 @@ jobs:
 
     - name: Build the Docker image
       run: |
-        docker build elb-check/elb-http-check/.  --tag elb-http-check:${GITHUB_REF}
-        docker push elb-http-check:${GITHUB_REF}
+        docker build elb-check/elb-http-check/.  --tag elb-http-check:${GITHUB_REF##*/}
+        docker push elb-http-check:${GITHUB_REF##*/}
