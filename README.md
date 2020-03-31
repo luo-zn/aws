@@ -4,6 +4,6 @@
 
 ## 安装基于docker镜像的aws-cli命令
 
-1. wget  [awscli/aws-cli.sh](/awscli/aws-cli.sh) -O /usr/local/bin/aws-cli
+1. wget  <https://github.com/luo-zn/aws/releases/download/1.0/aws-cli.sh> -O /usr/local/bin/aws-cli
 2. chmod +x /usr/local/bin/aws-cli
 3. aws-cli --help 查看更多帮助
