@@ -1,4 +1,4 @@
-name: Go
+name: Build elb-http-check
 
 on:
   push:
@@ -44,3 +44,4 @@ jobs:
         docker build elb-check/elb-http-check/.  --tag jenner/elb-http-check:${GITHUB_REF##*/}
         docker login -u jannanlo -p ${{secrets.DOCKERHUB}}
         docker push jenner/elb-http-check:${GITHUB_REF##*/}
+        docker logout
