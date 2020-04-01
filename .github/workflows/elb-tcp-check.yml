@@ -1,0 +1,57 @@
+name: Build elb-tcp-check
+
+env:
+  PROJECT_NAME: elb-tcp-check
+
+on:
+  push:
+    branches: [ master ]
+    path:
+      - 'elb-check/${PROJECT_NAME}/*'
+  pull_request:
+    branches: [ master ]
+    path:
+      - 'elb-check/${PROJECT_NAME}/*'
+
+
+jobs:
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Set up Go 1.13
+      uses: actions/setup-go@v1
+      with:
+        go-version: 1.13
+      id: go
+
+    - name: Check out code into the Go module directory
+      uses: actions/checkout@v2
+
+    - name: Get dependencies
+      run: |
+        go get -v -t -d ./...
+        if [ -f Gopkg.toml ]; then
+            curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
+            dep ensure
+        fi
+
+    - name: Build go code
+      run: export CGO_ENABLED=0 && GOOS=linux &&ls && cd elb-check/${PROJECT_NAME} &&  go build -v -installsuffix cgo 
+      
+    - name: Upload artifact
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: ${PROJECT_NAME}
+        path: elb-check/${PROJECT_NAME}/${PROJECT_NAME}
+
+    - name: Build the Docker image
+      run: |
+        export TAG=${GITHUB_REF##*/}
+        if [ $TAG == 'master' ];then TAG=latest; fi;
+        docker build elb-check/${PROJECT_NAME}/.  --tag jenner/${PROJECT_NAME}:${TAG}
+        docker login -u jannanlo -p ${{secrets.DOCKERHUB}}
+        docker push jenner/${PROJECT_NAME}:${TAG}
+        docker logout
