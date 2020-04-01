@@ -5,13 +5,15 @@ env:
 
 on:
   push:
+    paths-ignore:
+      - '*.md'
     branches: [ master ]
     path:
-      - "elb-check/awscli/**"
+      - 'elb-check/awscli/**'
   pull_request:
     branches: [ master ]
     path:
-      - "elb-check/awscli/**"
+      - 'elb-check/awscli/**'
 
 jobs:
 
