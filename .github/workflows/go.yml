@@ -42,5 +42,5 @@ jobs:
     - name: Build the Docker image
       run: |
         docker build elb-check/elb-http-check/.  --tag jenner/elb-http-check:${GITHUB_REF##*/}
-        docker login -u jannanlo -p ${DOCKERHUB}
+        docker login -u jannanlo -p ${{secrets.DOCKERHUB}}
         docker push jenner/elb-http-check:${GITHUB_REF##*/}
