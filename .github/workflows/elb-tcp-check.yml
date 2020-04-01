@@ -11,7 +11,7 @@ on:
   pull_request:
     branches: [ master ]
     path:
-      - 'elb-check${{ env.PROJECT_NAME }}/*'
+      - 'elb-check/${{ env.PROJECT_NAME }}/*'
 
 
 jobs:
