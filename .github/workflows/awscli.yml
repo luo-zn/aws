@@ -1,0 +1,30 @@
+name: Build awscli
+
+env:
+  PROJECT_NAME: awscli
+
+on:
+  push:
+    branches: [ master ]
+    path:
+      - "elb-check/awscli/**"
+  pull_request:
+    branches: [ master ]
+    path:
+      - "elb-check/awscli/**"
+
+jobs:
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Build the Docker image
+      run: |
+        export TAG=${GITHUB_REF##*/}
+        if [ $TAG == 'master' ];then TAG=latest; fi;
+        docker build ${PROJECT_NAME}/.  --tag jenner/${PROJECT_NAME}:${TAG}
+        docker login -u jannanlo -p ${{secrets.DOCKERHUB}}
+        docker push jenner/${PROJECT_NAME}:${TAG}
+        docker logout
