@@ -17,4 +17,4 @@ elb-check用于响应AWS的ELB服务心跳检查
 1. 在运行http服务的EC2虚拟机执行: docker run -d -p 9999:9999 --restart unless-stopped jenner/elb-http-check
 2. 在运行tcp或udp服务的EC2虚拟机执行: docker run -d -p 9999:9999 --restart unless-stopped jenner/elb-tcp-check
 3. 配置负载均衡器(ELB)目标组的运行状况检查，如下图所示
-![elb-http-check](/elb-check/imgs/http-check.PNG "elb-http-check") ![elb-tcp-check](/elb-check/imgs/tcp-check.PNG "elb-tcp-check")
+![elb-http-check](/elb-check/imgs/http-check.png "elb-http-check") ![elb-tcp-check](/elb-check/imgs/tcp-check.png "elb-tcp-check")
