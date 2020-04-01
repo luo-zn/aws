@@ -11,6 +11,8 @@ on:
     path:
       - 'elb-check/awscli/**'
   pull_request:
+    paths-ignore:
+      - '*.md'
     branches: [ master ]
     path:
       - 'elb-check/awscli/**'

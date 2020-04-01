@@ -5,10 +5,14 @@ env:
 
 on:
   push:
+    paths-ignore:
+      - '*.md'
     branches: [ master ]
     path:
       - 'elb-check/elb-tcp-check/**'
   pull_request:
+    paths-ignore:
+      - '*.md'
     branches: [ master ]
     path:
       - 'elb-check/elb-tcp-check/**'
