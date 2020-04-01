@@ -1,14 +1,17 @@
 name: Build elb-http-check
 
+env:
+  PROJECT_NAME: elb-http-check
+
 on:
   push:
     branches: [ master ]
     path:
-      - 'elb-check/elb-http-check/*'
+      - 'elb-check/${{ env.PROJECT_NAME }}/*'
   pull_request:
     branches: [ master ]
     path:
-      - 'elb-check/elb-http-check/*'
+      - 'elb-check/${{ env.PROJECT_NAME }}/*'
 
 
 jobs:
@@ -36,19 +39,22 @@ jobs:
         fi
 
     - name: Build go code
-      run: export CGO_ENABLED=0 && GOOS=linux &&ls && cd elb-check/elb-http-check &&  go build -v -installsuffix cgo 
+      run: |
+        export CGO_ENABLED=0 && GOOS=linux 
+        cd elb-check/${PROJECT_NAME} 
+        go build -v -installsuffix cgo 
       
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
       with:
-        name: elb-http-check
-        path: elb-check/elb-http-check/elb-http-check
+        name: ${{ env.PROJECT_NAME }}
+        path: elb-check/${{ env.PROJECT_NAME }}/${{ env.PROJECT_NAME }}
 
     - name: Build the Docker image
       run: |
         export TAG=${GITHUB_REF##*/}
         if [ $TAG == 'master' ];then TAG=latest; fi;
-        docker build elb-check/elb-http-check/.  --tag jenner/elb-http-check:${TAG}
+        docker build elb-check/${PROJECT_NAME}/.  --tag jenner/${PROJECT_NAME}:${TAG}
         docker login -u jannanlo -p ${{secrets.DOCKERHUB}}
-        docker push jenner/elb-http-check:${TAG}
+        docker push jenner/${PROJECT_NAME}:${TAG}
         docker logout
