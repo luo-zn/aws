@@ -7,11 +7,11 @@ on:
   push:
     branches: [ master ]
     path:
-      - 'elb-check/${{ env.PROJECT_NAME }}/*'
+      - 'elb-check/elb-tcp-check/*'
   pull_request:
     branches: [ master ]
     path:
-      - 'elb-check/${{ env.PROJECT_NAME }}/*'
+      - 'elb-check/elb-tcp-check/*'
 
 
 jobs:
