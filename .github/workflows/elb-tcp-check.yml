@@ -8,13 +8,13 @@ on:
     paths-ignore:
       - '*.md'
     branches: [ master ]
-    path:
+    paths:
       - 'elb-check/elb-tcp-check/**'
   pull_request:
     paths-ignore:
       - '*.md'
     branches: [ master ]
-    path:
+    paths:
       - 'elb-check/elb-tcp-check/**'
 
 jobs:
