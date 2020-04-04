@@ -7,11 +7,11 @@ on:
   push:
     branches: [ master ]
     paths:
-      - 'elb-check/awscli/**'
+      - 'awscli/**'
   pull_request:
     branches: [ master ]
     paths:
-      - 'elb-check/awscli/**'
+      - 'awscli/**'
 
 jobs:
 
