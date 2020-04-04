@@ -7,5 +7,5 @@ RUN chmod +x /usr/bin/docker-entrypoint.sh \
     && pip install --user awscli \
     && pip install boto3
 
-# ENTRYPOINT [ "/root/.local/bin/aws" ]
 ENTRYPOINT [ "docker-entrypoint.sh" ]
+# ENTRYPOINT [ "/root/.local/bin/aws" ]
