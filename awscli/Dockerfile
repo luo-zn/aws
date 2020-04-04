@@ -3,7 +3,7 @@ LABEL maintainer=Zhennan.luo python-version=3.8
 ENV PATH="/root/.local/bin:$PATH"
 COPY docker-entrypoint.sh /usr/bin/docker-entrypoint.sh
 RUN chmod +x /usr/bin/docker-entrypoint.sh \
-    && apk add --update --no-cache bash jq groff \
+    && apk add --update --no-cache bash jq groff zip \
     && pip install --user awscli \
     && pip install boto3
 
