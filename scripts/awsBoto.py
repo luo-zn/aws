@@ -68,12 +68,11 @@ class Lambda:
         kwargs = self.change_zipfile_2byte(kwargs)
         if self.get_function(**kwargs):
             print("Updating  code!")
-            resp = self.client.update_function_code(FunctionName=kwargs["FunctionName"], ZipFile=kwargs["Code"]["ZipFile"])
+            print(self.client.update_function_code(FunctionName=kwargs["FunctionName"], ZipFile=kwargs["Code"]["ZipFile"]))
             self.update_function_configuration(**kwargs)
         else:
             print("Creating lamda ", kwargs.get("FunctionName"))            
-            resp = self.client.create_function(**kwargs)
-        print(resp)
+            print(self.client.create_function(**kwargs))
         self.publish_version_with_alias(**versionAlias)
         print("*"*10, "Finished Lambda Deploying!", "*"*10)
 
