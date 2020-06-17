@@ -4,7 +4,7 @@
 
 function  awsCli()
 {
-  docker run --rm  -it -v $AWS_CONFIG:/root/.aws -v $(pwd):$(pwd) jenner/awscli  aws  $* 
+  docker run --rm  -it -v $AWS_CONFIG:/root/.aws -v $(pwd):$(pwd) -w $(pwd) jenner/awscli  aws  $* 
 }
 function initCfg(){  
   export AWS_CONFIG=$(pwd)/aws-configure
