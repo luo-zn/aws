@@ -13,11 +13,12 @@ function initCfg(){
     mkdir -p $AWS_CONFIG
   fi
   if [ ! -f $AWS_CONFIG/config ];then
-    cat > $AWS_CONFIG/config << EOF
+cat > $AWS_CONFIG/config << EOF
 [default]
 region = eu-central-1
-EOF  
+EOF
   fi
+  
   if [ ! -f  $AWS_CONFIG/credentials ];then
     cat > $AWS_CONFIG/credentials << EOF
 [default]
