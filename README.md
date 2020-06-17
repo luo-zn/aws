@@ -4,6 +4,8 @@
 
 ## 安装基于docker镜像的aws-cli命令
 
+aws-cli命令会在当前目录创建aws-configure目录，此目录可进行变量配置
+
 1. wget  <https://github.com/luo-zn/aws/releases/download/1.0/aws-cli.sh> -O /usr/local/bin/aws-cli
 2. chmod +x /usr/local/bin/aws-cli
 3. aws-cli --help 查看更多帮助
