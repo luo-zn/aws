@@ -39,7 +39,7 @@
   * 将快要到期的域名续费
 * 获取name servers的名称  
 * 操作域名转移  
-  转移域名在5个以内的步骤：  
+  转移的域名数量在5个以内的步骤：  
   * 打开Route 53控制台 <https://console.aws.amazon.com/route53/v2/home#GetStarted>
   * 在导航窗口，选择转移域
   * 输入需要转移的域名，点击检查
